@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.soulee.assignmentproject.entity.Movie;
+import com.asoule.assignmentproject.dtos.MovieDto;
 import com.soulee.assignmentproject.service.MovieService;
 
 @RestController
@@ -19,12 +19,12 @@ public class MovieController {
 	private MovieService movieService;
 
 	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public List<Movie> list() {
+	public List<MovieDto> list() {
 		return movieService.list();
 	}
 	
 	@RequestMapping(value = "/add", method = RequestMethod.POST)
-	public void add(@RequestBody Movie movie) {
+	public void add(@RequestBody MovieDto movie) {
 		movieService.add(movie);
 	}
 
