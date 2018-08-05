@@ -1,16 +1,24 @@
 package com.soulee.assignmentproject;
 
+import static springfox.documentation.builders.PathSelectors.regex;
+
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
+import com.google.common.base.Predicate;
+
+import springfox.documentation.builders.ApiInfoBuilder;
 import springfox.documentation.builders.PathSelectors;
 import springfox.documentation.builders.RequestHandlerSelectors;
+import springfox.documentation.service.ApiInfo;
 import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 @Configuration
 @EnableSwagger2
+@ComponentScan(basePackages = { "com.soulee.assignmentproject" })
 public class SwaggerConfig {                                    
     @Bean
     public Docket api() { 
@@ -18,7 +26,28 @@ public class SwaggerConfig {
           .select()                                  
           .apis(RequestHandlerSelectors.any())              
           .paths(PathSelectors.any())                          
-          .build();                                           
+          .build();                          
+        
+        
+//        return new Docket(DocumentationType.SWAGGER_2)
+//				.groupName("curry-interface")
+//				.apiInfo(apiInfo())
+//				.select()
+//				.paths(paths())
+//				.build();
     }
+    
+    private ApiInfo apiInfo() {
+		return new ApiInfoBuilder()
+				.title("Curry Interface")
+				//.contact("Curry Dev Team")
+				.description("An interface to Curry Gateway's configuration")
+				.build();
+	}
+
+	private Predicate<String> paths() {
+//		return regex(".*/(flows|file|forms|schemas|version|throttling|queues|ehcache|smpp|route|filter).*");
+		 return regex("/*");
+	}
 }
 
