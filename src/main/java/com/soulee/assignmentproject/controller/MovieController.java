@@ -30,7 +30,7 @@ public class MovieController {
 	}
 
 	@RequestMapping(value = "/", method = RequestMethod.DELETE)
-	public void deleteMovieById(@RequestBody MovieDto movieDto) {
+	public void delete(@RequestBody MovieDto movieDto) {
 		movieService.deleteById(movieDto.getId());
 	}
 
@@ -39,7 +39,7 @@ public class MovieController {
 		return movieService.getByName(name);
 	}
 
-	@RequestMapping(value = "/add", method = RequestMethod.POST)
+	@RequestMapping(value = "/", method = RequestMethod.PUT)
 	public void add(@RequestBody MovieDto Dto) {
 		movieService.add(Dto);
 	}
