@@ -1,42 +1,21 @@
-#logging:
-#    config: /opt/tomcat/config-overrides/hydra-logback.xml
-# Disable health checks for redis + rabbit
-#management.health.redis.enabled: false
-#management.health.rabbit.enabled: false
-#server.contextPath: /movies
-#endpoints:
-#    jmx:
-#        domain: movies
 spring:
-    aop.proxy-target-class: true
-    datasource:
-        url: jdbc:postgresql://localhost:5532/movies
-        username: movies_postgres
-        password: postgres
-        driver-class-name: org.postgresql.Driver
-    jpa:
-        database-platform: org.hibernate.dialect.PostgreSQLDialect
-        #generate-ddl: true
-        show-sql: true
-        properties:
-#            hibernate.cache.use_second_level_cache: true
-#            hibernate.cache.region.factory_class: org.hibernate.cache.ehcache.EhCacheRegionFactory
-#            hibernate.cache.use_query_cache: true
-#            hibernate.generate_statistics: true
-             hibernate.jdbc.lob.non_contextual_creation: true
-#             hibernate.ddl-auto: create
-#    jackson:
-#        FAIL_ON_UNKNOWN_PROPERTIES: false
-#        serialization:
-#            FAIL_ON_EMPTY_BEANS: false
-#            WRITE_DATES_AS_TIMESTAMPS: false
-#        deserialization:
-#            ADJUST_DATES_TO_CONTEXT_TIME_ZONE: false
+  aop.proxy-target-class: true
+  datasource:
+    url: jdbc:postgresql://localhost:5532/movies
+    username: movies_postgres
+    password: postgres
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    show-sql: true
+    properties:
+      hibernate.jdbc.lob.non_contextual_creation: true
+      hibernate.default_schema: movies
+      hibernate.id.new_generator_mappings: true
 flyway:
-    enabled: true
-    table: DB_MIGRATION_HISTORY
-    sqlMigrationSuffix: .Final.sql
-    schemas: movies
-
-    health-checks:
-          db-query: select now();
+  enabled: true
+  table: DB_MIGRATION_HISTORY
+  sqlMigrationSuffix: .Final.sql
+  schemas: movies
+  health-checks:
+    db-query: select now();

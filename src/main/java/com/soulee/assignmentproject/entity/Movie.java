@@ -2,16 +2,30 @@ package com.soulee.assignmentproject.entity;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "MOVIES.MOVIE")
+@Table(name = "MOVIE")
 public class Movie {
+	
 	@Id
-    @GeneratedValue
-    private Long id;
-    private String name;
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
+	
+	private String name;
+
+	public Movie() {}
+	
+	public Movie(String name) {
+		this.name = name;
+	}
+	
+	public Movie(Long id, String name) {
+		this.id = id;
+		this.name = name;
+	}
 	public Long getId() {
 		return id;
 	}

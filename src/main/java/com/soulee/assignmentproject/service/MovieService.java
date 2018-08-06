@@ -17,12 +17,10 @@ public class MovieService {
 	private MovieRepository movieRepository;
 
 	public List<MovieDto>list(){
-		return movieRepository.findAll().stream().map(m -> new MovieDto(m.getId(), m.getName())).collect(Collectors.toList());
+		return movieRepository.findAll().stream().map(m -> new MovieDto( m.getName())).collect(Collectors.toList());
 	}
 	
 	public void add(MovieDto movie){
-		Movie m = new Movie();
-		movie.setName(movie.getName());
-		movieRepository.save(m);
+		movieRepository.save(new Movie(movie.getName()));
 	}
 }

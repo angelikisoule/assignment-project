@@ -2,7 +2,7 @@
 
 # Docker postgres
 docker pull postgres:9.3
-docker run --name movie-postgres -p 5532:5432 -e POSTGRES_PASSWORD=postgres -d postgres:9.3
+docker run --name movie_postgres -p 5532:5432 -e POSTGRES_PASSWORD=postgres -d postgres:9.3
 
 # Database
 
