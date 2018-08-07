@@ -12,6 +12,9 @@ spring:
       hibernate.jdbc.lob.non_contextual_creation: true
       hibernate.default_schema: movies
       hibernate.id.new_generator_mappings: true
+
+  mvc.view.prefix : /views/
+  mvc.view.suffix : .html
 flyway:
   enabled: true
   table: DB_MIGRATION_HISTORY
