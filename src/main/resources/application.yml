@@ -13,6 +13,7 @@ spring:
       hibernate.default_schema: movies
       hibernate.id.new_generator_mappings: true
 
+  hateoas.use-hal-as-default-json-media-type: false
   mvc.view.prefix : /views/
   mvc.view.suffix : .html
 flyway:

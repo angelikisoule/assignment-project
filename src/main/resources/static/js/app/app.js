@@ -6,5 +6,6 @@ demoApp.constant("CONSTANTS", {
     getUserByIdUrl: "/user/getUser/",
     getAllUsers: "/user/getAllUsers",
     saveUser: "/user/saveUser",
-    movieList: "/movies"
+    movieList: "/movies/",
+    saveMovie: "/movies/"
 });

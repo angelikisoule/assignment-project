@@ -3,7 +3,9 @@ package com.asoule.assignmentproject.dtos;
 import java.io.Serializable;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
+@JsonPropertyOrder({"name","id"})
 public class MovieDto implements Serializable {
 
 	private static final long serialVersionUID = 1757638994976288427L;
