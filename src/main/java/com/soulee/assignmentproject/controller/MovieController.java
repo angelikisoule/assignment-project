@@ -29,11 +29,11 @@ public class MovieController {
 		return movieService.getById(id);
 	}
 
-	@RequestMapping(value = "/", method = RequestMethod.DELETE)
-	public void delete(@RequestBody MovieDto movieDto) {
-		movieService.deleteById(movieDto.getId());
+	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
+	public void delete(@PathVariable("id") Long id) {
+		movieService.deleteById(id);
 	}
-
+	
 	@RequestMapping(value = "/search/{name}", method = RequestMethod.GET)
 	public List<MovieDto> getMovie(@PathVariable("name") String name) {
 		return movieService.getByName(name);

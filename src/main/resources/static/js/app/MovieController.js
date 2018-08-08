@@ -46,5 +46,22 @@ module.controller("MovieController", ["$scope", "MovieService",
             });
         }
         
+        $scope.deleteMovie = function(movieDto) {
+        	MovieService.deleteMovie(movieDto).then(function() {
+                console.log("works");
+                MovieService.list().then(function(value) {
+                    $scope.allMovies = value.data;
+                }, function(reason) {
+                    console.log("error occured");
+                }, function(value) {
+                    console.log("no callback");
+                });
+            }, function(reason) {
+                console.log("error occured");
+            }, function(value) {
+                console.log("no callback");
+            });
+        }
+        
     }
 ]);
