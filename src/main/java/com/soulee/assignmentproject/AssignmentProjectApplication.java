@@ -1,5 +1,6 @@
 package com.soulee.assignmentproject;
 
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.boot.builder.SpringApplicationBuilder;
@@ -12,6 +13,7 @@ import com.google.common.collect.ImmutableMap;
 @ComponentScan("com")
 @EntityScan("com")
 @EnableJpaRepositories("com")
+@EnableAutoConfiguration
 public class AssignmentProjectApplication {
 	
 	private static final String CONFIG_NAME = "application";

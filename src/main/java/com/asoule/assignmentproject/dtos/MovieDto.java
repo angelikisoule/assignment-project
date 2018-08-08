@@ -15,6 +15,10 @@ public class MovieDto implements Serializable {
 	
 	@JsonInclude(JsonInclude.Include.NON_EMPTY)
 	private String name;
+	
+	@JsonInclude(JsonInclude.Include.NON_EMPTY)
+	private Long likes;
+
 
 	public MovieDto() {
 	}
@@ -22,10 +26,24 @@ public class MovieDto implements Serializable {
 	public MovieDto(String name) {
 		this.name = name;
 	}
-
+	
 	public MovieDto(Long id, String name) {
 		this.id = id;
 		this.name = name;
+	}
+
+	public MovieDto(Long id, String name, Long likes) {
+		this.id = id;
+		this.name = name;
+		this.likes = likes;
+	}
+
+	public Long getLikes() {
+		return likes;
+	}
+	
+	public void setLikes(Long likes) {
+		this.likes = likes;
 	}
 
 	public String getName() {

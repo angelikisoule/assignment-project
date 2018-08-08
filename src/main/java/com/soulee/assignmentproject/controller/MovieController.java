@@ -43,5 +43,10 @@ public class MovieController {
 	public void add(@RequestBody MovieDto Dto) {
 		movieService.add(Dto);
 	}
+	
+	@RequestMapping(value = "/{id}", method = RequestMethod.POST)
+	public void like(@PathVariable("id") Long id) {
+		movieService.like(id);
+	}
 
 }

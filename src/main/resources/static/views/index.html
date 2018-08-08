@@ -11,7 +11,10 @@
 	    <h2>Movies</h2>
 	    <header ng-repeat-start="item in allMovies"></header>
 		<div class="body">
+			<span>{{ item.id }}</span> 
 			<span>{{ item.name }}</span> 	
+			<span>{{ item.likes }}</span> 
+			<button ng-click="likeMovie(item)" class="btn btn-sm btn-info">Like</button>	
 	        <button ng-click="deleteMovie(item)" class="btn btn-sm btn-info">Delete</button>		
 		</div>
 		<footer ng-repeat-end></footer>

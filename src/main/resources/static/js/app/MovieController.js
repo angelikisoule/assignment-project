@@ -4,7 +4,8 @@ module.controller("MovieController", ["$scope", "MovieService",
     function($scope, MovieService) {
         $scope.movieDto = {
             id: null,
-            name: null
+            name: null,
+            likes: 0
         };
         $scope.skills = [];
         $scope.allMovies = [];
@@ -19,12 +20,6 @@ module.controller("MovieController", ["$scope", "MovieService",
         });
         
         $scope.saveMovie = function() {
-//            $scope.movieDto.skillDtos = $scope.skills.map(skill => {
-//                return {
-//                    skillId: null,
-//                    skillName: skill
-//                };
-//            });
             MovieService.saveMovie($scope.movieDto).then(function() {
                 console.log("works");
                 MovieService.list().then(function(value) {
@@ -34,7 +29,6 @@ module.controller("MovieController", ["$scope", "MovieService",
                 }, function(value) {
                     console.log("no callback");
                 });
-//                $scope.skills = [];
                 $scope.movieDto = {
                     id: null,
                     name: null
@@ -48,6 +42,23 @@ module.controller("MovieController", ["$scope", "MovieService",
         
         $scope.deleteMovie = function(movieDto) {
         	MovieService.deleteMovie(movieDto).then(function() {
+                console.log("works");
+                MovieService.list().then(function(value) {
+                    $scope.allMovies = value.data;
+                }, function(reason) {
+                    console.log("error occured");
+                }, function(value) {
+                    console.log("no callback");
+                });
+            }, function(reason) {
+                console.log("error occured");
+            }, function(value) {
+                console.log("no callback");
+            });
+        }
+        
+        $scope.likeMovie = function(movieDto) {
+        	MovieService.likeMovie(movieDto).then(function() {
                 console.log("works");
                 MovieService.list().then(function(value) {
                     $scope.allMovies = value.data;

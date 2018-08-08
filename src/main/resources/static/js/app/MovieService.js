@@ -12,16 +12,10 @@ angular.module('demo.services', []).factory('MovieService', ["$http", "CONSTANTS
     
     service.deleteMovie = function(movieDto) {
         return $http.delete(CONSTANTS.deleteMovie + '/' + movieDto.id);
-    	
-//    	return 
-//    	$http({
-//    	    method: 'DELETE',
-//    	    url: CONSTANTS.deleteMovie,
-//    	    data: movieDto,
-//    	    headers: {
-//    	        'Content-type': 'application/json;charset=utf-8'
-//    	    }
-//    	});
+    }
+    
+    service.likeMovie = function(movieDto) {
+        return $http.post(CONSTANTS.movieList+'/'+movieDto.id);
     }
     return service;
 }]);

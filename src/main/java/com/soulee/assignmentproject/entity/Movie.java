@@ -1,9 +1,12 @@
 package com.soulee.assignmentproject.entity;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -15,6 +18,10 @@ public class Movie {
 	private Long id;
 	
 	private String name;
+	
+	@OneToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "like_id", nullable = false)
+	private Like like;
 
 	public Movie() {}
 	
@@ -26,6 +33,20 @@ public class Movie {
 		this.id = id;
 		this.name = name;
 	}
+	
+	public Movie( String name, Like like) {
+		this.name = name;
+		this.like = like;
+	}
+	
+	public Like getLike() {
+		return like;
+	}
+
+	public void setLike(Like like) {
+		this.like = like;
+	}
+
 	public Long getId() {
 		return id;
 	}
