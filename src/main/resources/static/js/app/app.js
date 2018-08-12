@@ -1,5 +1,5 @@
 'use strict'
-var demoApp = angular.module('demo', ['ui.bootstrap', 'demo.controllers',
+var demoApp = angular.module('demo', ['ui.bootstrap', 'demo.controllers', 'ngTable',
     'demo.services'
 ]);
 demoApp.constant("CONSTANTS", {

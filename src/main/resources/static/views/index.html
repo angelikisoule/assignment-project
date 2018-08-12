@@ -9,15 +9,24 @@
 	<div class="container" ng-controller="MovieController">
 		
 	    <h2>Movies</h2>
-	    <header ng-repeat-start="item in allMovies"></header>
 		<div class="body">
-			<span>{{ item.id }}</span> 
-			<span>{{ item.name }}</span> 	
-			<span>{{ item.likes }}</span> 
-			<button ng-click="likeMovie(item)" class="btn btn-sm btn-info">Like</button>	
-	        <button ng-click="deleteMovie(item)" class="btn btn-sm btn-info">Delete</button>		
+		
+		
+		  <table ng-table="tableParams" class="table" show-filter="false">
+		    <tr ng-repeat="item in allMovies" style="text-align: center;">
+		      <td title="'Name'" filter="{ name: 'text'}" style="text-align: left;">
+		        {{item.name}}</td>
+		      <td title="'Likes'" filter="{ likes: 'number'}" >
+		        {{item.likes}}</td>
+		      <td>
+		        <button ng-click="likeMovie(item)" class="btn btn-sm btn-info">Like</button>	
+		       </td>
+		       <td filter="{ likes: 'number'}" >
+				<button ng-click="deleteMovie(item)" class="btn btn-sm btn-info">Delete</button>		
+			   </td>
+		    </tr>
+		  </table>
 		</div>
-		<footer ng-repeat-end></footer>
 		<hr/>
 		
 		<h2>Add a movie</h2>
@@ -50,6 +59,7 @@
 <!-- </div> -->
 </body>
 <script src="js/lib/angular.min.js"></script>
+<script src="js/lib/ng-table.js"></script>
 <script src="js/lib/ui-bootstrap-tpls-2.5.0.min.js"></script>
 <script src="js/app/app.js"></script>
 <script src="js/app/UserController.js"></script>
@@ -57,5 +67,7 @@
 <script src="js/app/MovieController.js"></script>
 <script src="js/app/MovieService.js"></script>
 <link rel="stylesheet" href="css/lib/bootstrap.min.css"/>
+<link rel="stylesheet" href="css/lib/ng-table.css"/>
 <link rel="stylesheet" href="css/app/app.css"/>
+
 </html>
